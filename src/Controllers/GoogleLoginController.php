@@ -12,9 +12,10 @@ class GoogleLoginController extends Controller {
 	private $userModel;
 	private $googleClient;
 
-	public function __construct() {
-		$this->userModel = new User();
-		$this->googleClient = new Client();
+//	public function __construct(User $userModel, Client $googleClient) {
+	public function __construct(User $userModel) {
+//		$this->userModel = $userModel;
+//		$this->googleClient = $googleClient;
 	}
 
 	public function login() {

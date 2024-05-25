@@ -7,6 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 // Load environment variables
 use Dotenv\Dotenv;
 
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -16,9 +17,20 @@ define('APP_URL', $_ENV['APP_URL']);
 
 // Initialize PHP-DI container
 use DI\ContainerBuilder;
+use PortfolioApp\Models\User;
 
-$containerBuilder = new ContainerBuilder();
-$container = $containerBuilder->build();
+$container = new DI\Container([
+	PDO::class => function() {
+		$dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
+		$username = $_ENV['DB_USER'];
+		$password = $_ENV['DB_PASSWORD'];
+		return new PDO($dsn, $username, $password);
+	},
+	User::class => function($container) {
+		return new PortfolioApp\Models\User($container->get('PDO'),'','','');
+	}
+
+]);
 
 // Register dependencies in the container
 $container->set('PDO', function () {
@@ -31,19 +43,19 @@ $container->set('PDO', function () {
 
 $container->set('PortfolioApp\Models\User', function ($container) {
 	// Inject PDO dependency into User model constructor
-	return new PortfolioApp\Models\User($container->get('PDO'));
+	return new PortfolioApp\Models\User($container->get('PDO'),'','','');
 });
 
-$container->set('Google\Client', function () {
-	// Instantiate Google Client with necessary configurations
-	$client = new Google\Client();
-	$client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
-	$client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
-	$client->setRedirectUri($_ENV['LOGIN_REDIRECT_URL']);
-	$client->addScope('email');
-	return $client;
-});
+//$container->set('Google\Client', function () {
+//	// Instantiate Google Client with necessary configurations
+//	$client = new Google\Client();
+//	$client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+//	$client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+//	$client->setRedirectUri($_ENV['LOGIN_REDIRECT_URL']);
+//	$client->addScope('email');
+//	return $client;
+//});
 
 // Retrieve router and dispatch request
-$router = require './src/routes.php';
-$router->dispatch($_SERVER['REQUEST_URI']);
+//$router = require './src/routes.php';
+//$router->dispatch($_SERVER['REQUEST_URI']);

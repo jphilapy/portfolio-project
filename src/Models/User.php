@@ -12,6 +12,7 @@ class User {
 
 
 	public function __construct(PDO $connection, $name, $email, $jd) {
+		var_dump($connection, $name, $email, $jd); exit;
 		$this->name = $name;
 		$this->email = $email;
 		$this->username = $jd;

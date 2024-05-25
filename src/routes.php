@@ -1,9 +1,9 @@
 <?php
 
-use MVC\Router;
-use MVC\Controllers\UserController;
-use MVC\Controllers\GeneralController;
-use MVC\Controllers\CourseController;
+use PortfolioApp\Router;
+use PortfolioApp\Controllers\UserController;
+use PortfolioApp\Controllers\GeneralController;
+use PortfolioApp\Controllers\CourseController;
 
 $router = new Router();
 

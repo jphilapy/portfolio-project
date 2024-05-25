@@ -1,15 +1,18 @@
 {
-    "name": "jeffphilapy/dr-russ3ll",
+    "name": "myportfolio/portfolio-app",
+    "description": "Portfolio Project",
+    "require": {
+        "php": "^8.0"
+    },
     "autoload": {
         "psr-4": {
-            "MVC\\": "src/"
+            "PortfolioApp\\": "src/"
         }
     },
     "authors": [
         {
             "name": "Jeff Philapy",
-            "email": "jeff@altahost.com"
+            "email": "dev@jeffphilapy.com"
         }
-    ],
-    "require": {}
+    ]
 }

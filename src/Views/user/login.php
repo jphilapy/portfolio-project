@@ -13,7 +13,10 @@
 				<div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control" type="password" id="password" data-bs-theme="light"></div>
 				<div class="mb-3">
 					<div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox" data-bs-theme="light"><label class="form-check-label" for="checkbox">Remember me</label></div>
-				</div><button class="btn btn-primary" type="submit">Log In</button>
+				</div>
+                <div class="mb-3 d-flex justify-content-between">
+                    <button class="btn btn-primary" type="submit">Log In</button>  <button class="btn btn-primary" type="submit">Log In with Google</button>
+                </div>
 			</form>
 		</div>
 	</section>

@@ -14,7 +14,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-6"><img class="img-thumbnail" src="../assets/img/scenery/image5.jpg?h=5a16d46fccd884924ce66752802d76c5"></div>
+                <div class="col-md-6"><img class="img-thumbnail" src="assets/img/scenery/image5.jpg?h=5a16d46fccd884924ce66752802d76c5"></div>
                 <div class="col-md-6">
                     <h3>Lorem impsum dolor sit amet</h3>
                     <div class="getting-started-info">
@@ -58,9 +58,9 @@
             </div>
             <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
                 <div class="carousel-inner">
-                    <div class="carousel-item active"><img class="w-100 d-block" src="../assets/img/scenery/image1.jpg?h=323a7e5d8e12e9b60d93996156594f41" alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="../assets/img/scenery/image4.jpg?h=ae7b4d25adfdfa1581297908235a949d" alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="../assets/img/scenery/image6.jpg?h=26f762ae21fd9cce95e86763ac6154ca" alt="Slide Image"></div>
+                    <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/scenery/image1.jpg?h=323a7e5d8e12e9b60d93996156594f41" alt="Slide Image"></div>
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image4.jpg?h=ae7b4d25adfdfa1581297908235a949d" alt="Slide Image"></div>
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image6.jpg?h=26f762ae21fd9cce95e86763ac6154ca" alt="Slide Image"></div>
                 </div>
                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
                 <div class="carousel-indicators"><button type="button" data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></button> <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="1"></button> <button type="button" data-bs-target="#carousel-1" data-bs-slide-to="2"></button></div>
@@ -75,7 +75,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="../assets/img/avatars/avatar1.jpg?h=2bf47f2c2deaed837d2490a2db0a7175">
+                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar1.jpg?h=2bf47f2c2deaed837d2490a2db0a7175">
                         <div class="card-body info">
                             <h4 class="card-title">John Smith</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="../assets/img/avatars/avatar2.jpg?h=4178f5c706118a93c77520b6d0b30713">
+                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar2.jpg?h=4178f5c706118a93c77520b6d0b30713">
                         <div class="card-body info">
                             <h4 class="card-title">Robert Downturn</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="../assets/img/avatars/avatar3.jpg?h=4c77b34bb68eaede08fdd5dfec8752b0">
+                    <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar3.jpg?h=4c77b34bb68eaede08fdd5dfec8752b0">
                         <div class="card-body info">
                             <h4 class="card-title">Ally Sanders</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

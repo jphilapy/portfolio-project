@@ -1,6 +1,6 @@
 <?php
 
-namespace MVC;
+namespace PortfolioApp;
 
 class Controller {
 	protected function render($view, $data = []) {

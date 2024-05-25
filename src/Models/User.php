@@ -1,6 +1,6 @@
 <?php
 
-namespace MVC\Models;
+namespace PortfolioApp\Models;
 
 class User {
 	public $name;

@@ -1,9 +1,9 @@
 <?php
 
-namespace MVC\Controllers;
+namespace PortfolioApp\Controllers;
 
-use MVC\Controller;
-use MVC\Models\User;
+use PortfolioApp\Controller;
+use PortfolioApp\Models\User;
 use PDO;
 
 class GeneralController extends Controller {

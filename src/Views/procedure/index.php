@@ -34,7 +34,7 @@
                                 </tr>
 
 								<?php endforeach; ?>
-                                </tfoot>
+                                </tbody>
                             </table>
                         </div>
                         <div class="row">

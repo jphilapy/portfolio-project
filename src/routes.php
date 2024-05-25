@@ -31,7 +31,7 @@ $router->addRoute('POST','/update_course', CourseController::class, 'update_cour
 $router->addRoute('GET','/delete_course/{id}', CourseController::class, 'delete_course', ['id']);
 
 // add course
-$router->addRoute('GET','/add_user', CourseController::class, 'add_user', ['id']);
-$router->addRoute('POST','/save_user', CourseController::class, 'save_user');
+//$router->addRoute('GET','/add_user', CourseController::class, 'add_user', ['id']);
+//$router->addRoute('POST','/save_user', CourseController::class, 'save_user');
 
 return $router;

@@ -15,7 +15,7 @@ class UserController extends Controller {
 //
 //		$this->render('user/index', ['user' => $users]);
 //	}
-	public function index($page = '') {
+	public function index($page = '') {;
 		// Database connection settings
 		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
 		$username = 'root';

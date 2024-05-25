@@ -1,5 +1,6 @@
 <?php
 
+use PortfolioApp\Controllers\GoogleLoginController;
 use PortfolioApp\Router;
 use PortfolioApp\Controllers\UserController;
 use PortfolioApp\Controllers\GeneralController;
@@ -33,5 +34,8 @@ $router->addRoute('GET','/delete_course/{id}', CourseController::class, 'delete_
 // add course
 //$router->addRoute('GET','/add_user', CourseController::class, 'add_user', ['id']);
 //$router->addRoute('POST','/save_user', CourseController::class, 'save_user');
+
+
+$router->addRoute('GET','/login_google', GoogleLoginController::class, 'login', ['id']);
 
 return $router;

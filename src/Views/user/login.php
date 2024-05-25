@@ -15,7 +15,7 @@
 					<div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox" data-bs-theme="light"><label class="form-check-label" for="checkbox">Remember me</label></div>
 				</div>
                 <div class="mb-3 d-flex justify-content-between">
-                    <button class="btn btn-primary" type="submit">Log In</button>  <button class="btn btn-primary" type="submit">Log In with Google</button>
+                    <button class="btn btn-primary" type="submit">Log In</button>  <a href="login_google" class="btn btn-primary">Log In with Google</a>
                 </div>
 			</form>
 		</div>

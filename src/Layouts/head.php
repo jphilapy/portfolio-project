@@ -6,11 +6,11 @@
     <title>About Us - Brand</title>
     <base href="<?php echo APP_URL; ?>">
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=254a09188e530cb03e8e344c8d2feb3e">
-    <link rel="stylesheet" href="assets/css/Montserrat.css?h=82d36912225071c3dd167e4f3707da07">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css?h=fbfa80fe81882dd47f8abd5cbb011b19">
-    <link rel="stylesheet" href="assets/css/baguetteBox.min.css?h=cd0f778148efbd9a6da168a5fc542cea">
-    <link rel="stylesheet" href="assets/css/vanilla-zoom.min.css?h=b1904b38fb5db9c70aa0a0b48e09a39c">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Montserrat.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top bg-body clean-navbar navbar-light">

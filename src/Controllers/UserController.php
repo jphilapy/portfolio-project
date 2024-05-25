@@ -17,7 +17,7 @@ class UserController extends Controller {
 //	}
 	public function index($page = '') {
 		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=drruss;charset=utf8mb4';
+		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
 		$username = 'root';
 		$password = 'root';
 
@@ -67,7 +67,7 @@ class UserController extends Controller {
 	public function edit_user($id)
 	{
 		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=drruss;charset=utf8mb4';
+		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
 		$username = 'root';
 		$password = 'root';
 
@@ -88,7 +88,7 @@ class UserController extends Controller {
 	public function update_user()
 	{
 		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=drruss;charset=utf8mb4';
+		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
 		$username = 'root';
 		$password = 'root';
 
@@ -173,7 +173,7 @@ class UserController extends Controller {
 			}
 
 			// Connect to the database using PDO
-			$pdo = new PDO('mysql:host=localhost;dbname=drruss', 'root', 'root');
+			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			// Prepare the SQL statement
@@ -207,7 +207,7 @@ class UserController extends Controller {
 			$userId = $id;
 
 			// Connect to the database using PDO
-			$pdo = new PDO('mysql:host=localhost;dbname=drruss', 'root', 'root');
+			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			// Prepare the SQL statement

@@ -15,6 +15,9 @@ class Router {
 	}
 
 	public function dispatch($uri) {
+		// Remove the /mvc base path from the URI
+		$uri = str_replace('/mvc', '', $uri);
+
 		$method = $_SERVER['REQUEST_METHOD']; // Get the HTTP method from the request
 
 		foreach ($this->routes as $route => $routeInfo) {
@@ -45,4 +48,3 @@ class Router {
 		return '/^' . str_replace('/', '\/', $regex) . '$/';
 	}
 }
-

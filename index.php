@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 
 define('LAYOUTS', __DIR__ . '/src/Layouts/');
+define('URL', 'http://localhost/mvc/');
 
 require 'vendor/autoload.php';
 

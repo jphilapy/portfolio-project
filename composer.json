@@ -1,0 +1,15 @@
+{
+    "name": "jeffphilapy/dr-russ3ll",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeff Philapy",
+            "email": "jeff@altahost.com"
+        }
+    ],
+    "require": {}
+}

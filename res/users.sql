@@ -9,7 +9,9 @@ CREATE TABLE `users`
     `email`      varchar(100) NOT NULL,
     `password`   varchar(255) NOT NULL,
     `is_active`  tinyint(1)        DEFAULT '0',
-    `created_at` timestamp    NULL DEFAULT CURRENT_TIMESTAMP
+    `access_token` json DEFAULT NULL,
+    `refresh_token` text DEFAULT NULL,
+    `created_at` timestamp    NULL DEFAULT CURRENT_TIMESTAMP,
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

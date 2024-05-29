@@ -17,10 +17,8 @@ class Router {
 	}
 
 	public function dispatch($uri, $container) {
-		// Remove the /mvc base path from the URI
-		$uri = str_replace('/mvc', '', $uri);
 
-		$method = $_SERVER['REQUEST_METHOD']; // Get the HTTP method from the request
+		$method = $_SERVER['REQUEST_METHOD'];
 
 		foreach ($this->routes as $route => $routeInfo) {
 			if ($routeInfo['method'] === $method && preg_match($this->getRouteRegex($route), $uri, $matches)) {
@@ -34,7 +32,7 @@ class Router {
 				if ($constructor !== null) {
 					foreach ($constructor->getParameters() as $param) {
 						$type = (string)$param->getType();
-						// Check if the dependency exists in the container
+
 						if ($container->has($type)) {
 							$dependencies[] = $container->get($type);
 						} else {
@@ -48,7 +46,6 @@ class Router {
 				if ($method === 'GET') {
 					$controller->$action(...array_values(array_slice($matches, 1)));
 				} else {
-					// For POST requests, retrieve POST data and pass it to the action method
 					$postData = $_POST;
 					$controller->$action($postData);
 				}

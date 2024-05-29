@@ -2,3 +2,4 @@ vendor
 .DS_Store
 .idea
 /.env
+/error_log.txt

@@ -2,6 +2,8 @@
 
 namespace PortfolioApp;
 
+use ReflectionClass;
+
 class Router {
 	protected $routes = [];
 
@@ -14,7 +16,7 @@ class Router {
 		];
 	}
 
-	public function dispatch($uri) {
+	public function dispatch($uri, $container) {
 		// Remove the /mvc base path from the URI
 		$uri = str_replace('/mvc', '', $uri);
 
@@ -25,7 +27,23 @@ class Router {
 				$controllerName = $routeInfo['controller'];
 				$action = $routeInfo['action'];
 
-				$controller = new $controllerName();
+				$reflector = new ReflectionClass($controllerName);
+				$constructor = $reflector->getConstructor();
+
+				$dependencies = [];
+				if ($constructor !== null) {
+					foreach ($constructor->getParameters() as $param) {
+						$type = (string)$param->getType();
+						// Check if the dependency exists in the container
+						if ($container->has($type)) {
+							$dependencies[] = $container->get($type);
+						} else {
+							throw new \Exception("Dependency '$type' not found in the container.");
+						}
+					}
+				}
+
+				$controller = new $controllerName(...$dependencies);
 
 				if ($method === 'GET') {
 					$controller->$action(...array_values(array_slice($matches, 1)));

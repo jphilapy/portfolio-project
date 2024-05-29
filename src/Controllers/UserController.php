@@ -3,27 +3,20 @@
 namespace PortfolioApp\Controllers;
 
 use PortfolioApp\Controller;
-use PortfolioApp\Models\User;
 use PDO;
+use PortfolioApp\Test;
 
 class UserController extends Controller {
-//	public function index() {
-//		$users = [
-//			new User('John Doe1', 'john@example.com', 'jd1'),
-//			new User('Jane Doe2', 'jane@example.com', 'jd2')
-//		];
-//
-//		$this->render('user/index', ['user' => $users]);
-//	}
-	public function index($page = '') {;
-		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
-		$username = 'root';
-		$password = 'root';
 
-		// Create PDO instance
-		$pdo = new PDO($dsn, $username, $password);
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	private $pdo;
+
+	public function __construct(PDO $pdo)
+	{
+		$this->pdo = $pdo;
+	}
+
+	public function index($page = '') {
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		// Pagination parameters
 		$currentPage = isset($page) && $page != '' ? intval($page) : 1;
@@ -33,14 +26,14 @@ class UserController extends Controller {
 		$offset = ($currentPage - 1) * $perPage;
 
 		// Query to fetch users with pagination
-		$stmt = $pdo->prepare("SELECT * FROM users LIMIT :limit OFFSET :offset");
+		$stmt = $this->pdo->prepare("SELECT * FROM users LIMIT :limit OFFSET :offset");
 		$stmt->bindParam(':limit', $perPage, PDO::PARAM_INT);
 		$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 		$stmt->execute();
 		$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		// Query to count total number of users
-		$stmt = $pdo->prepare("SELECT COUNT(*) AS total FROM users");
+		$stmt = $this->pdo->prepare("SELECT COUNT(*) AS total FROM users");
 		$stmt->execute();
 		$totalRecords = $stmt->fetchColumn();
 		$totalPages = ceil($totalRecords / $perPage);
@@ -66,17 +59,10 @@ class UserController extends Controller {
 	}
 	public function edit_user($id)
 	{
-		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
-		$username = 'root';
-		$password = 'root';
-
-		// Create PDO instance
-		$pdo = new PDO($dsn, $username, $password);
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		// Query to fetch user by ID
-		$stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+		$stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
 		$user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -87,14 +73,8 @@ class UserController extends Controller {
 
 	public function update_user()
 	{
-		// Database connection settings
-		$dsn = 'mysql:host=localhost;dbname=portfolio_project;charset=utf8mb4';
-		$username = 'root';
-		$password = 'root';
-
 		// Create PDO instance
-		$pdo = new PDO($dsn, $username, $password);
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		// Get form data
 		$id = (int)$_POST['id']; // Assuming you have an input field with name 'id' in your form
@@ -121,7 +101,7 @@ class UserController extends Controller {
 
 		if (!empty($errors)) {
 			// Query to fetch user by ID
-			$stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+			$stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt->execute();
 			$user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -131,7 +111,7 @@ class UserController extends Controller {
 		}
 
 		// Update user record in the database
-		$stmt = $pdo->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
+		$stmt = $this->pdo->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR);
 		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -173,11 +153,10 @@ class UserController extends Controller {
 			}
 
 			// Connect to the database using PDO
-			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			// Prepare the SQL statement
-			$stmt = $pdo->prepare("INSERT INTO users (username, email, password, is_active) VALUES (:username, :email, :password, :is_active)");
+			$stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, is_active) VALUES (:username, :email, :password, :is_active)");
 			// Add more fields as needed
 
 			// Bind parameters
@@ -207,11 +186,10 @@ class UserController extends Controller {
 			$userId = $id;
 
 			// Connect to the database using PDO
-			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			// Prepare the SQL statement
-			$stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
+			$stmt = $this->pdo->prepare("DELETE FROM users WHERE id = :id");
 
 			// Bind the user ID parameter
 			$stmt->bindParam(':id', $userId);

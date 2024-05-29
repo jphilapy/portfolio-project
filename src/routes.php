@@ -36,6 +36,6 @@ $router->addRoute('GET','/delete_course/{id}', CourseController::class, 'delete_
 //$router->addRoute('POST','/save_user', CourseController::class, 'save_user');
 
 
-$router->addRoute('GET','/login_google', GoogleLoginController::class, 'login', ['id']);
+$router->addRoute('GET','/login_google', GoogleLoginController::class, 'login');
 
 return $router;

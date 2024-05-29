@@ -7,21 +7,21 @@ use ReflectionClass;
 class Router {
 	protected $routes = [];
 
-	public function addRoute($method, $route, $controller, $action, $params = []) {
+	public function addRoute($method, $route, $controller, $action) {
 		$this->routes[$route] = [
 			'method' => $method,
 			'controller' => $controller,
-			'action' => $action,
-			'params' => $params
+			'action' => $action
 		];
 	}
 
 	public function dispatch($uri, $container) {
 
 		$method = $_SERVER['REQUEST_METHOD'];
+		$uriPath = parse_url($uri, PHP_URL_PATH);
 
 		foreach ($this->routes as $route => $routeInfo) {
-			if ($routeInfo['method'] === $method && preg_match($this->getRouteRegex($route), $uri, $matches)) {
+			if ($routeInfo['method'] === $method && preg_match($this->getRouteRegex($route), $uriPath, $matches)) {
 				$controllerName = $routeInfo['controller'];
 				$action = $routeInfo['action'];
 
@@ -44,7 +44,10 @@ class Router {
 				$controller = new $controllerName(...$dependencies);
 
 				if ($method === 'GET') {
-					$controller->$action(...array_values(array_slice($matches, 1)));
+					$routeParams = array_slice($matches, 1);
+					$getParams = $_GET;
+					$allParams = array_merge($routeParams, $getParams);
+					$controller->$action(...array_values($allParams));
 				} else {
 					$postData = $_POST;
 					$controller->$action($postData);

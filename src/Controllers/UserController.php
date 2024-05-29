@@ -53,6 +53,13 @@ class UserController extends Controller
 		$this->render('user/login');
 	}
 
+	public function logout()
+	{
+		unset($_SESSION['access_token']);
+
+		$this->render('user/login');
+	}
+
 	public function add_user()
 	{
 		// Pass user data to the view

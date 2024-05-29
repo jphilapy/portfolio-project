@@ -1,6 +1,7 @@
 <?php
-
 namespace PortfolioApp\Controllers;
+
+session_start();
 
 use PortfolioApp\Controller;
 use Google\Client;

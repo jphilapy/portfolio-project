@@ -15,11 +15,11 @@ $dotenv->load();
 define('LAYOUTS', __DIR__ . '/src/Layouts/');
 define('APP_URL', $_ENV['APP_URL']);
 
-// Initialize PHP-DI container
-use DI\ContainerBuilder;
+use Google\Client;
+use PortfolioApp\Controllers\GoogleLoginController;
 use PortfolioApp\Controllers\UserController;
 use PortfolioApp\Models\User;
-use PortfolioApp\Test;
+use Psr\Container\ContainerInterface;
 
 $container = new DI\Container();
 $container->set(PDO::class, function () {
@@ -31,7 +31,25 @@ $container->set(PDO::class, function () {
 	return new PDO($dsn, $username, $password);
 });
 
+$container->set(User::class, function (ContainerInterface $c) {
+	return new User($c->get(PDO::class), '','','');
+});
+
+$container->set(Client::class, function () {
+	return new Client();
+});
+
+$container->set(GoogleLoginController::class, function (ContainerInterface $c) {
+	return new GoogleLoginController(
+		$c->get(User::class),
+		$c->get(Client::class)
+	);
+});
+
 $container->get(UserController::class);
+$container->get(GoogleLoginController::class);
+
+
 
 // Retrieve router and dispatch request
 $router = require './src/routes.php';

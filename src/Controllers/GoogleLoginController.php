@@ -12,16 +12,15 @@ class GoogleLoginController extends Controller {
 	private $userModel;
 	private $googleClient;
 
-//	public function __construct(User $userModel, Client $googleClient) {
-	public function __construct(User $userModel) {
-//		$this->userModel = $userModel;
-//		$this->googleClient = $googleClient;
+	public function __construct(User $userModel, Client $googleClient) {
+		$this->userModel = $userModel;
+		$this->googleClient = $googleClient;
 	}
 
 	public function login() {
 		$this->googleClient->setClientId($_ENV['GOOGLE_CLIENT_ID']);
 		$this->googleClient->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
-		$this->googleClient->setRedirectUri($_ENV['GOOGLE_REDIRECT_URI']);
+		$this->googleClient->setRedirectUri($_ENV['GOOGLE_LOGIN_REDIRECT_URL']);
 		$this->googleClient->addScope('email');
 
 		if(isset($_GET['code'])) {

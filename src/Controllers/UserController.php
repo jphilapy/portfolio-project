@@ -4,9 +4,9 @@ namespace PortfolioApp\Controllers;
 
 use PortfolioApp\Controller;
 use PDO;
-use PortfolioApp\Test;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
 	private $pdo;
 
@@ -15,7 +15,8 @@ class UserController extends Controller {
 		$this->pdo = $pdo;
 	}
 
-	public function index($page = '') {
+	public function index($page = '')
+	{
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		// Pagination parameters
@@ -47,16 +48,17 @@ class UserController extends Controller {
 		]);
 	}
 
-
 	public function login()
 	{
 		$this->render('user/login');
 	}
+
 	public function add_user()
 	{
 		// Pass user data to the view
 		$this->render('user/add_user');
 	}
+
 	public function edit_user($id)
 	{
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -106,7 +108,7 @@ class UserController extends Controller {
 			$stmt->execute();
 			$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-			$this->render('user/edit_user', ['errors' => $errors, 'user'=>$user]);
+			$this->render('user/edit_user', ['errors' => $errors, 'user' => $user]);
 			return;
 		}
 
@@ -118,7 +120,7 @@ class UserController extends Controller {
 		$stmt->execute();
 
 		// Redirect or output success message
-		 header('Location: /users');
+		header('Location: /users');
 	}
 
 	public function save_user()

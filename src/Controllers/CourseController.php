@@ -172,22 +172,22 @@ class CourseController extends Controller {
 				return;
 			}
 
-			// Connect to the database using PDO
+			
 			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			// Prepare the SQL statement
+			
 			$stmt = $pdo->prepare("INSERT INTO courses (username, email, password, is_active) VALUES (:username, :email, :password, :is_active)");
 			// Add more fields as needed
 
-			// Bind parameters
+			
 			$stmt->bindParam(':username', $username);
 			$stmt->bindParam(':email', $email);
 			$stmt->bindParam(':password', $password);
 			$stmt->bindParam(':is_active', $is_active);
-			// Bind more parameters as needed
+			
 
-			// Execute the SQL statement
+			
 			$stmt->execute();
 
 			// Redirect or display a success message
@@ -206,17 +206,17 @@ class CourseController extends Controller {
 		if (isset($id)) {
 			$userId = $id;
 
-			// Connect to the database using PDO
+			
 			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			// Prepare the SQL statement
+			
 			$stmt = $pdo->prepare("DELETE FROM courses WHERE id = :id");
 
 			// Bind the user ID parameter
 			$stmt->bindParam(':id', $userId);
 
-			// Execute the SQL statement
+			
 			$stmt->execute();
 
 			// Redirect or display a success message

@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,6 +24,7 @@
 <!--                <li class="nav-item"><a class="nav-link active" href="about-us.html">About Us</a></li>-->
 				<?php if(!isset($_SESSION['loggedin_user'])): ?>
                     <li class="nav-item"><a class="nav-link active" href="login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="register">Register</a></li>
                 <?php else: ?>
                     <li class="nav-item"><a class="nav-link active" href="logout">Logout</a></li>
 				<?php endif; ?>

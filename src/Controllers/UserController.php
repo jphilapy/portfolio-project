@@ -55,7 +55,37 @@ class UserController extends Controller
 
 	public function login_db()
 	{
-		echo 'logged in'; exit;
+		// TASK: match encrypted password to database
+		$sql = "SELECT count(id) as found FROM users WHERE email = ? AND password = ?";
+		$stmt = $this->pdo->prepare($sql);
+
+		$stmt->execute([$_POST['username'], $_POST['password']]);
+
+		$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		if($user['found'] > 0) {
+			echo 'logged in'; exit;
+		}
+	}
+
+	public function register()
+	{
+		$this->render('user/register');
+	}
+
+	public function register_db()
+	{
+		// TASK: encrypt password
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$stmt = $this->pdo->prepare("INSERT INTO users (email, password, is_active) VALUES (:email, :password, :is_active)");
+
+		$is_active = 1; //TASK: set to active for now. Later send email verification to activate
+
+		$stmt->bindParam(':email', $_POST['username']);
+		$stmt->bindParam(':password', $_POST['password']);
+		$stmt->bindParam(':is_active', $is_active);
+
+		$stmt->execute();
 	}
 
 	public function logout()
@@ -166,21 +196,21 @@ class UserController extends Controller
 				return;
 			}
 
-			// Connect to the database using PDO
+
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			// Prepare the SQL statement
+
 			$stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, is_active) VALUES (:username, :email, :password, :is_active)");
 			// Add more fields as needed
 
-			// Bind parameters
+
 			$stmt->bindParam(':username', $username);
 			$stmt->bindParam(':email', $email);
 			$stmt->bindParam(':password', $password);
 			$stmt->bindParam(':is_active', $is_active);
-			// Bind more parameters as needed
 
-			// Execute the SQL statement
+
+
 			$stmt->execute();
 
 			// Redirect or display a success message
@@ -199,16 +229,16 @@ class UserController extends Controller
 		if (isset($id)) {
 			$userId = $id;
 
-			// Connect to the database using PDO
+
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			// Prepare the SQL statement
+
 			$stmt = $this->pdo->prepare("DELETE FROM users WHERE id = :id");
 
 			// Bind the user ID parameter
 			$stmt->bindParam(':id', $userId);
 
-			// Execute the SQL statement
+
 			$stmt->execute();
 
 			// Redirect or display a success message

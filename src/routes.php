@@ -13,9 +13,13 @@ $router->addRoute('GET','/users/', UserController::class, 'index');
 $router->addRoute('GET','/users', UserController::class, 'index');
 $router->addRoute('GET','/users/page/{page}', UserController::class, 'index', ['page']);
 
+// login
 $router->addRoute('GET','/login', UserController::class, 'login');
 $router->addRoute('POST','/login', UserController::class, 'login_db');
 $router->addRoute('GET','/logout', UserController::class, 'logout');
+
+$router->addRoute('GET','/register', UserController::class, 'register');
+$router->addRoute('POST','/register', UserController::class, 'register_db');
 
 /* USERS */
 // edit user

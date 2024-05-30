@@ -53,6 +53,11 @@ class UserController extends Controller
 		$this->render('user/login');
 	}
 
+	public function login_db()
+	{
+		echo 'logged in'; exit;
+	}
+
 	public function logout()
 	{
 		unset($_SESSION['loggedin_user']);

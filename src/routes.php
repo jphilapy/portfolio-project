@@ -14,6 +14,7 @@ $router->addRoute('GET','/users', UserController::class, 'index');
 $router->addRoute('GET','/users/page/{page}', UserController::class, 'index', ['page']);
 
 $router->addRoute('GET','/login', UserController::class, 'login');
+$router->addRoute('POST','/login', UserController::class, 'login_db');
 $router->addRoute('GET','/logout', UserController::class, 'logout');
 
 /* USERS */

@@ -23,7 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="users">Users</a></li>
 <!--                <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>-->
 <!--                <li class="nav-item"><a class="nav-link active" href="about-us.html">About Us</a></li>-->
-				<?php if(!isset($_SESSION['access_token'])): ?>
+				<?php if(!isset($_SESSION['loggedin_user'])): ?>
                     <li class="nav-item"><a class="nav-link active" href="login">Login</a></li>
                 <?php else: ?>
                     <li class="nav-item"><a class="nav-link active" href="logout">Logout</a></li>

@@ -34,20 +34,20 @@ class GoogleLoginController extends Controller {
 			if($user) {
 				$this->googleClient->setAccessToken($user['access_token']);
 
-				if ($this->googleClient->isAccessTokenExpired()) {
-					$this->googleClient->fetchAccessTokenWithRefreshToken($user['refresh_token']);
-					$accessToken = $this->googleClient->getAccessToken();
-					$this->userModel->updateUserAccessToken($userEmail, json_encode($accessToken));
-				}
+//				if ($this->googleClient->isAccessTokenExpired()) {
+//					$this->googleClient->fetchAccessTokenWithRefreshToken($user['refresh_token']);
+//					$accessToken = $this->googleClient->getAccessToken();
+//					$this->userModel->updateUserAccessToken($userEmail, json_encode($accessToken));
+//				}
 
-				$_SESSION['access_token'] = $this->googleClient->getAccessToken();
+				$_SESSION['loggedin_user'] = $userEmail;
 				header('Location: ' . $_ENV['APP_URL']);
 				exit;
 			} else {
 				$accessToken = $this->googleClient->getAccessToken();
 				$refreshToken = $this->googleClient->getRefreshToken();
 				$this->userModel->createUser($userEmail, json_encode($accessToken), $refreshToken);
-				$_SESSION['access_token'] = $accessToken;
+				$_SESSION['loggedin_user'] = $userEmail;
 				header('Location: ' . $_ENV['APP_URL']);
 				exit;
 			}

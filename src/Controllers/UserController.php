@@ -55,7 +55,7 @@ class UserController extends Controller
 
 	public function logout()
 	{
-		unset($_SESSION['access_token']);
+		unset($_SESSION['loggedin_user']);
 
 		$this->render('user/login');
 	}

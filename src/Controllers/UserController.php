@@ -56,15 +56,18 @@ class UserController extends Controller
 	public function login_db()
 	{
 		// TASK: match encrypted password to database
-		$sql = "SELECT count(id) as found FROM users WHERE email = ? AND password = ?";
+		$sql = "SELECT password FROM users WHERE email = :email";
+
 		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindParam(':email', $_POST['username']);
+		$stmt->execute();
 
-		$stmt->execute([$_POST['username'], $_POST['password']]);
+		$storedHash = $stmt->fetchColumn();
 
-		$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-		if($user['found'] > 0) {
-			echo 'logged in'; exit;
+		if ($storedHash && password_verify($_POST['password'], $storedHash)) {
+			echo 'login successful'; exit;
+		} else {
+			echo 'login failed'; exit;
 		}
 	}
 
@@ -81,8 +84,10 @@ class UserController extends Controller
 
 		$is_active = 1; //TASK: set to active for now. Later send email verification to activate
 
+		$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
 		$stmt->bindParam(':email', $_POST['username']);
-		$stmt->bindParam(':password', $_POST['password']);
+		$stmt->bindParam(':password', $hashedPassword);
 		$stmt->bindParam(':is_active', $is_active);
 
 		$stmt->execute();

@@ -55,6 +55,26 @@ class UserController extends Controller
 
 	public function login_db()
 	{
+		// Validate user input
+		$errors = [];
+		$email = trim($_POST['username']);
+		$password = $_POST['password'];
+
+		if (empty($email)) {
+			$errors[] = 'Email is required.';
+		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$errors[] = 'Invalid email format.';
+		}
+
+		if (empty($password)) {
+			$errors[] = 'Password is required.';
+		}
+
+		if (!empty($errors)) {
+			$this->render('user/login', ['errors' => $errors]);
+			return;
+		}
+
 		// TASK: match encrypted password to database
 		$sql = "SELECT password FROM users WHERE email = :email";
 

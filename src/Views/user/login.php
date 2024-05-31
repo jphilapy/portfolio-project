@@ -9,6 +9,15 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
 			</div>
 			<form method="post">
+				<?php if (!empty($errors)): ?>
+                    <div class="errors mb-3 pb-0 alert alert-danger">
+                        <ul>
+							<?php foreach ($errors as $error): ?>
+                                <li><?php echo htmlspecialchars($error); ?></li>
+							<?php endforeach; ?>
+                        </ul>
+                    </div>
+				<?php endif; ?>
 				<div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" name="username" id="email" data-bs-theme="light"></div>
 				<div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control" type="password" name="password" id="password" data-bs-theme="light"></div>
 				<div class="mb-3">

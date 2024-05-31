@@ -29,12 +29,12 @@
                             </div>
                             <div>
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" name="email" type="text">
+                                <input class="form-control" id="email" name="email" type="text">
                             </div>
 
                             <div>
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" name="password" type="password">
+                                <input class="form-control" id="password" name="password" type="password">
                             </div>
 
                             <div>

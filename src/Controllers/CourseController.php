@@ -133,8 +133,8 @@ class CourseController extends Controller {
 		// Update user record in the database
 		$stmt = $pdo->prepare("UPDATE courses SET username = :username, email = :email WHERE id = :id");
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-		$stmt->bindParam(':username', $username, PDO::PARAM_STR);
-		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':email', $email);
 		$stmt->execute();
 
 		// Redirect or output success message
@@ -172,22 +172,22 @@ class CourseController extends Controller {
 				return;
 			}
 
-			
+
 			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			
+
 			$stmt = $pdo->prepare("INSERT INTO courses (username, email, password, is_active) VALUES (:username, :email, :password, :is_active)");
 			// Add more fields as needed
 
-			
+
 			$stmt->bindParam(':username', $username);
 			$stmt->bindParam(':email', $email);
 			$stmt->bindParam(':password', $password);
 			$stmt->bindParam(':is_active', $is_active);
-			
 
-			
+
+
 			$stmt->execute();
 
 			// Redirect or display a success message
@@ -206,17 +206,17 @@ class CourseController extends Controller {
 		if (isset($id)) {
 			$userId = $id;
 
-			
+
 			$pdo = new PDO('mysql:host=localhost;dbname=portfolio_project', 'root', 'root');
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			
+
 			$stmt = $pdo->prepare("DELETE FROM courses WHERE id = :id");
 
 			// Bind the user ID parameter
 			$stmt->bindParam(':id', $userId);
 
-			
+
 			$stmt->execute();
 
 			// Redirect or display a success message
@@ -224,8 +224,7 @@ class CourseController extends Controller {
 			header('Location: /courses');
 			exit();
 		} else {
-			// Handle the case where the user ID is not provided
-			// You may display an error message or redirect to another page
+			echo 'missing id'; exit;
 		}
 	}
 

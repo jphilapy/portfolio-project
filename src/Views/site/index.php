@@ -1,7 +1,7 @@
 <?php include(LAYOUTS. 'head.php'); ?>
 
 <main class="page landing-page">
-    <section class="clean-block clean-hero" style="background-image:url(&quot;assets/img/tech/image4.jpg?h=0adc0de9a17a7caea6b8641f5d6ae02c&quot;);color:rgba(9, 162, 255, 0.85);">
+    <section class="clean-block clean-hero" style="background-image:url('/assets/img/tech/image4.jpg?h=0adc0de9a17a7caea6b8641f5d6ae02c');color:rgba(9, 162, 255, 0.85);">
         <div class="text">
             <h2>Lorem ipsum dolor sit amet.</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p><button class="btn btn-outline-light btn-lg" type="button">Learn More</button>

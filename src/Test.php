@@ -9,7 +9,7 @@ class Test
 		$this->val = $message;
 	}
 
-	public function showTest()
+	public function showTest(): string
 	{
 		return $this->val;
 	}

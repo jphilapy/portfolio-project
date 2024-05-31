@@ -14,8 +14,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // Setup layouts and app URL
-define('LAYOUTS', __DIR__ . '/src/Layouts/');
-define('APP_URL', $_ENV['APP_URL']);
+const LAYOUTS = __DIR__ . '/src/Layouts/';
 
 use Google\Client;
 use PortfolioApp\Controllers\GoogleLoginController;
@@ -58,7 +57,7 @@ $router = require './src/routes.php';
 $router->dispatch($_SERVER['REQUEST_URI'], $container);
 
 
-function logToFile($value)
+function logToFile($value): void
 {
 	// Specify the path to the log file
 	$logFile = __DIR__ . '/error_log.txt';

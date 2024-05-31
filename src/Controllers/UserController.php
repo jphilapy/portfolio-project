@@ -15,7 +15,7 @@ class UserController extends Controller
 		$this->pdo = $pdo;
 	}
 
-	public function index($page = '')
+	public function index($page = ''): void
 	{
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -48,12 +48,12 @@ class UserController extends Controller
 		]);
 	}
 
-	public function login()
+	public function login(): void
 	{
 		$this->render('user/login');
 	}
 
-	public function login_db()
+	public function login_db(): void
 	{
 		// Validate user input
 		$errors = [];
@@ -86,17 +86,17 @@ class UserController extends Controller
 
 		if ($storedHash && password_verify($_POST['password'], $storedHash)) {
 			echo 'login successful'; exit;
-		} else {
-			echo 'login failed'; exit;
 		}
+
+		echo 'login failed'; exit;
 	}
 
-	public function register()
+	public function register(): void
 	{
 		$this->render('user/register');
 	}
 
-	public function register_db()
+	public function register_db(): void
 	{
 		// TASK: encrypt password
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -113,20 +113,20 @@ class UserController extends Controller
 		$stmt->execute();
 	}
 
-	public function logout()
+	public function logout(): void
 	{
 		unset($_SESSION['loggedin_user']);
 
 		$this->render('user/login');
 	}
 
-	public function add_user()
+	public function add_user(): void
 	{
 		// Pass user data to the view
 		$this->render('user/add_user');
 	}
 
-	public function edit_user($id)
+	public function edit_user($id): void
 	{
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -140,7 +140,7 @@ class UserController extends Controller
 		$this->render('user/edit_user', ['user' => $user]);
 	}
 
-	public function update_user()
+	public function update_user(): void
 	{
 		// Create PDO instance
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -182,15 +182,15 @@ class UserController extends Controller
 		// Update user record in the database
 		$stmt = $this->pdo->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-		$stmt->bindParam(':username', $username, PDO::PARAM_STR);
-		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+		$stmt->bindParam(':username', $username);
+		$stmt->bindParam(':email', $email);
 		$stmt->execute();
 
 		// Redirect or output success message
 		header('Location: /users');
 	}
 
-	public function save_user()
+	public function save_user(): void
 	{
 		// Check if the form was submitted
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -248,7 +248,7 @@ class UserController extends Controller
 		$this->render('user/add_user');
 	}
 
-	public function delete_user($id)
+	public function delete_user($id): void
 	{
 		// Check if the user ID is provided (you may need to adjust this logic based on your application)
 		if (isset($id)) {
@@ -271,8 +271,7 @@ class UserController extends Controller
 			header('Location: /users');
 			exit();
 		} else {
-			// Handle the case where the user ID is not provided
-			// You may display an error message or redirect to another page
+			echo 'missing id'; exit;
 		}
 	}
 

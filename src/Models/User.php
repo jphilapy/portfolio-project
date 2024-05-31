@@ -27,14 +27,16 @@ class User {
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 
-	public function createUser($email, $accessToken, $refreshToken) {
+	public function createUser($email, $accessToken, $refreshToken): bool|string
+	{
 		$sql = "INSERT INTO users (email, access_token, refresh_token) VALUES (?, ?, ?)";
 		$stmt = $this->connection->prepare($sql);
 		$stmt->execute([$email, $accessToken, $refreshToken]);
 		return $this->connection->lastInsertId();
 	}
 
-	public function updateUserAccessToken($email, $accessToken) {
+	public function updateUserAccessToken($email, $accessToken): bool
+	{
 		$sql = "UPDATE users SET access_token = ? WHERE email = ?";
 		$stmt = $this->connection->prepare($sql);
 		return $stmt->execute([$accessToken, $email]);

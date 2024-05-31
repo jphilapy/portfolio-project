@@ -11,7 +11,7 @@ CREATE TABLE `users`
     `is_active`  tinyint(1)        DEFAULT '0',
     `access_token` json DEFAULT NULL,
     `refresh_token` text DEFAULT NULL,
-    `created_at` timestamp    NULL DEFAULT CURRENT_TIMESTAMP,
+    `created_at` timestamp    NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

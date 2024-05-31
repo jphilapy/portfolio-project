@@ -16,7 +16,8 @@ class GoogleLoginController extends Controller {
 		$this->googleClient = $googleClient;
 	}
 
-	public function login() {
+	public function login(): void
+	{
 		$this->googleClient->setClientId($_ENV['GOOGLE_CLIENT_ID']);
 		$this->googleClient->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
 		$this->googleClient->setRedirectUri($_ENV['GOOGLE_LOGIN_REDIRECT_URL']);
@@ -38,22 +39,20 @@ class GoogleLoginController extends Controller {
 //					$this->userModel->updateUserAccessToken($userEmail, json_encode($accessToken));
 //				}
 
-				$_SESSION['loggedin_user'] = $userEmail;
-				header('Location: ' . $_ENV['APP_URL']);
-				exit;
 			} else {
 				$accessToken = $this->googleClient->getAccessToken();
 				$refreshToken = $this->googleClient->getRefreshToken();
 				$this->userModel->createUser($userEmail, json_encode($accessToken), $refreshToken);
-				$_SESSION['loggedin_user'] = $userEmail;
-				header('Location: ' . $_ENV['APP_URL']);
-				exit;
 			}
-		} else {
-			$authUrl = $this->googleClient->createAuthUrl();
-			header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+
+			$_SESSION['loggedin_user'] = $userEmail;
+			header('Location: ' . $_ENV['APP_URL']);
 			exit;
 		}
+
+		$authUrl = $this->googleClient->createAuthUrl();
+		header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+		exit;
 	}
 }
 

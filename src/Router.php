@@ -2,19 +2,22 @@
 
 namespace PortfolioApp;
 
+use Exception;
 use ReflectionClass;
 
 class Router {
 	protected $routes = [];
 
-	public function addRoute($method, $route, $controller, $action) {
+	public function addRoute($method, $route, $controller, $action): void
+	{
 		$this->routes[$method][$route] = [
 			'controller' => $controller,
 			'action' => $action
 		];
 	}
 
-	public function dispatch($uri, $container) {
+	public function dispatch($uri, $container): void
+	{
 
 		$method = $_SERVER['REQUEST_METHOD'];
 		$uriPath = parse_url($uri, PHP_URL_PATH);
@@ -36,7 +39,7 @@ class Router {
 							if ($container->has($type)) {
 								$dependencies[] = $container->get($type);
 							} else {
-								throw new \Exception("Dependency '$type' not found in the container.");
+								throw new Exception("Dependency '$type' not found in the container.");
 							}
 						}
 					}
@@ -57,10 +60,11 @@ class Router {
 			}
 		}
 
-		throw new \Exception("No route found for $method $uri");
+		throw new Exception("No route found for $method $uri");
 	}
 
-	private function getRouteRegex($route) {
+	private function getRouteRegex($route): string
+	{
 		// Convert route parameters to regex placeholders
 		$regex = preg_replace('/{(\w+)}/', '(?P<$1>\w+)', $route);
 		// Add start and end delimiters to match the entire URI

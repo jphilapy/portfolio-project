@@ -1,4 +1,12 @@
-<?php include(LAYOUTS. 'head.php'); ?>
+<?php
+/**
+ * @var array $data
+ * @var int $currentPage
+ * @var int $totalRecords
+ * @var int $totalPages
+ */
+include(LAYOUTS . 'head.php');
+?>
 
 <main class="page">
     <section class="clean-block about-us">
@@ -25,11 +33,11 @@
                                 <tbody>
 								<?php foreach ($data['users'] as $user): ?>
                                 <tr>
-                                    <td><?= $user['email'] ?></td>
-                                    <td><?= $user['username'] ?></td>
+                                    <td><?php echo $user['email'] ?></td>
+                                    <td><?php echo $user['username'] ?></td>
                                     <td class="d-flex justify-content-end gap-3">
-                                        <a class="btn btn-info text-light" href="edit_user/<?= $user['id'] ?>">Edit</a>
-                                        <a href="delete_user/<?= $user['id'] ?>" onclick="return confirmDelete('User')" class="btn btn-danger">Delete</a>
+                                        <a class="btn btn-info text-light" href="edit_user/<?php echo $user['id'] ?>">Edit</a>
+                                        <a href="delete_user/<?php echo $user['id'] ?>" onclick="return confirmDelete('User')" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
 
@@ -57,17 +65,17 @@
                                 <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                                     <ul class="pagination">
 										<?php if ($currentPage > 1): ?>
-                                            <li class="page-item"><a class="page-link" href="users/page/<?= $currentPage - 1 ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item"><a class="page-link" href="users/page/<?php echo $currentPage - 1 ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
 										<?php else: ?>
                                             <li class="page-item disabled"><span class="page-link" aria-hidden="true">«</span></li>
 										<?php endif; ?>
 
 										<?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                            <li class="page-item <?= ($i == $currentPage) ? 'active' : '' ?>"> <a class="page-link" href="users/page/<?= $i ?>"><?= $i ?></a></li>
+                                            <li class="page-item <?php echo ($i == $currentPage) ? 'active' : '' ?>"> <a class="page-link" href="users/page/<?php echo $i ?>"><?php echo $i ?></a></li>
 										<?php endfor; ?>
 
 										<?php if ($currentPage < $totalPages): ?>
-                                            <li class="page-item"><a class="page-link" href="users/page/<?= $currentPage + 1 ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                            <li class="page-item"><a class="page-link" href="users/page/<?php echo $currentPage + 1 ?>" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 										<?php else: ?>
                                             <li class="page-item disabled"><span class="page-link" aria-hidden="true">»</span></li>
 										<?php endif; ?>

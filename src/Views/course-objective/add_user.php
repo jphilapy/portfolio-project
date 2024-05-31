@@ -29,17 +29,17 @@
                             </div>
                             <div>
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" name="email" type="text">
+                                <input class="form-control" id="email" name="email" type="text">
                             </div>
 
                             <div>
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" name="password" type="password">
+                                <input class="form-control" id="password" name="password" type="password">
                             </div>
 
                             <div>
-                                <label class="form-label" for="password">Password Confirmation</label>
-                                <input class="form-control" name="password_confirmation" type="password">
+                                <label class="form-label" for="password-confirmation">Password Confirmation</label>
+                                <input class="form-control" id="password-confirmation" name="password_confirmation" type="password">
                             </div>
 
                             <label class="form-label" for="is_active">Active <input class="form-check" id="is_active"

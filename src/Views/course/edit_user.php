@@ -1,4 +1,10 @@
-<?php include(LAYOUTS . 'head.php'); ?>
+<?php
+/**
+ * @var array $errors
+ * @var array $user
+ */
+include(LAYOUTS . 'head.php');
+?>
 
 <main class="page">
     <section class="clean-block about-us">
@@ -28,16 +34,16 @@
                             </div>
                             <div>
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" name="email" type="text" value="<?php echo $user['email']; ?>">
+                                <input class="form-control" id="email" name="email" type="text" value="<?php echo $user['email']; ?>">
                             </div>
                             <div>
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" name="password" type="password">
+                                <input class="form-control" id="password" name="password" type="password">
                             </div>
 
                             <div>
-                                <label class="form-label" for="password">Password Confirmation</label>
-                                <input class="form-control" name="password_confirmation" type="password">
+                                <label class="form-label" for="password-confirmation">Password Confirmation</label>
+                                <input class="form-control" id="password-confirmation" name="password_confirmation" type="password">
                             </div>
 
 

@@ -3,14 +3,13 @@ Follow this repo to get a better idea of my skillset. This codebase includes a s
 dependency injection. 
 
 The MVC is a bit rough around the edges. Although I have used Laravel and Codeigniter, and tinkered
-with others, I have never attempted to assemble one from scratch, for learning purposes.
+with others, I have never attempted to assemble one from, mostly, scratch. *For learning purposes.*
 
 ### Setup
-
-necessary sql files are located in the res directory
-
-
-To run: **php -S localhost:8000**
+1. Necessary sql files are located in the res directory
+2. See .env.example to make your .env file. Configure it with the relevant details
+3. Run: **composer install**
+4. Run server: **php -S localhost:8000**
 
 
 ### Common Error Messages

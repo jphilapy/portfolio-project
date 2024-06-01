@@ -98,6 +98,26 @@ class UserController extends Controller
 
 	public function register_db(): void
 	{
+		// Validate user input
+		$errors = [];
+		$email = trim($_POST['username']);
+		$password = $_POST['password'];
+
+		if (empty($email)) {
+			$errors[] = 'Email is required.';
+		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$errors[] = 'Invalid email format.';
+		}
+
+		if (empty($password)) {
+			$errors[] = 'Password is required.';
+		}
+
+		if (!empty($errors)) {
+			$this->render('user/register', ['errors' => $errors]);
+			return;
+		}
+
 		// TASK: encrypt password
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$stmt = $this->pdo->prepare("INSERT INTO users (email, password, is_active) VALUES (:email, :password, :is_active)");

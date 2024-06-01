@@ -4,6 +4,7 @@ use PortfolioApp\Controllers\AdminController;
 use PortfolioApp\Controllers\GoogleLoginController;
 use PortfolioApp\Router;
 use PortfolioApp\Controllers\UserController;
+use PortfolioApp\Controllers\Admin\UserController as AdminUserController;
 use PortfolioApp\Controllers\GeneralController;
 use PortfolioApp\Controllers\CourseController;
 
@@ -15,8 +16,7 @@ $router->addRoute('GET','/', GeneralController::class, 'index');
 $router->addRoute('GET','/dashboard', AdminController::class, 'dashboard');
 
 // users
-$router->addRoute('GET','/users', AdminController::class, 'users');
-//$router->addRoute('GET','/users', UserController::class, 'index');
+$router->addRoute('GET','/users', AdminUserController::class, 'index');
 $router->addRoute('GET','/users/page/{page}', UserController::class, 'index');
 
 // login
@@ -29,13 +29,13 @@ $router->addRoute('POST','/register', UserController::class, 'register_db');
 
 /* USERS */
 // edit user
-$router->addRoute('GET','/edit_user/{id}', UserController::class, 'edit_user');
-$router->addRoute('POST','/update_user', UserController::class, 'update_user');
-$router->addRoute('GET','/delete_user/{id}', UserController::class, 'delete_user');
+$router->addRoute('GET','/edit_user/{id}', AdminUserController::class, 'edit_user');
+$router->addRoute('POST','/update_user', AdminUserController::class, 'update_user');
+$router->addRoute('GET','/delete_user/{id}', AdminUserController::class, 'delete_user');
 
 // add user
-$router->addRoute('GET','/add_user', UserController::class, 'add_user');
-$router->addRoute('POST','/save_user', UserController::class, 'save_user');
+$router->addRoute('GET','/add_user', AdminUserController::class, 'add_user');
+$router->addRoute('POST','/save_user', AdminUserController::class, 'save_user');
 
 /* COURSE */
 // edit course

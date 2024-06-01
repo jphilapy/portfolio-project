@@ -17,6 +17,7 @@ $dotenv->load();
 const LAYOUTS = __DIR__ . '/src/Layouts/';
 
 use Google\Client;
+use PortfolioApp\Controllers\AdminController;
 use PortfolioApp\Controllers\GoogleLoginController;
 use PortfolioApp\Controllers\UserController;
 use PortfolioApp\Models\User;
@@ -49,6 +50,7 @@ $container->set(GoogleLoginController::class, function (ContainerInterface $c) {
 
 $container->get(UserController::class);
 $container->get(GoogleLoginController::class);
+//$container->get(AdminController::class);
 
 
 

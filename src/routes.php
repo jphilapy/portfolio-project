@@ -15,8 +15,8 @@ $router->addRoute('GET','/', GeneralController::class, 'index');
 $router->addRoute('GET','/dashboard', AdminController::class, 'dashboard');
 
 // users
-$router->addRoute('GET','/users/', UserController::class, 'index');
-$router->addRoute('GET','/users', UserController::class, 'index');
+$router->addRoute('GET','/users', AdminController::class, 'users');
+//$router->addRoute('GET','/users', UserController::class, 'index');
 $router->addRoute('GET','/users/page/{page}', UserController::class, 'index');
 
 // login

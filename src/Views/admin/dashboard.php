@@ -7,6 +7,7 @@
                 <!--                <h2 class="text-info">Title</h2>-->
             </div>
             <div class="container-fluid">
+				<?php include(LAYOUTS. 'dash-menu.php'); ?>
 
                 <!--content-->
                 Dashboard Stuff Here

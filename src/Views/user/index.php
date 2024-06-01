@@ -15,6 +15,7 @@ include(LAYOUTS . 'head.php');
 <!--                <h2 class="text-info">Dashboard</h2>-->
             </div>
             <div class="container-fluid">
+				<?php include(LAYOUTS. 'dash-menu.php'); ?>
                 <div class="card shadow">
                     <div class="card-header py-3 d-flex justify-content-between">
                         <p class="text-primary m-0 fw-bold">Users</p>

@@ -19,8 +19,6 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="dashboard">Dashboard</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="users">Users</a></li>
 <!--                <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>-->
 <!--                <li class="nav-item"><a class="nav-link active" href="about-us.html">About Us</a></li>-->
 				<?php if(!isset($_SESSION['loggedin_user'])): ?>

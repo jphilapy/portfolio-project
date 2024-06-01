@@ -25,3 +25,4 @@ Make sure you include the use statement for the relevant class being used in you
 ```
 Fatal error: Uncaught Exception: No route found for POST /dashboard
 ```
+Looking for a post route in routes.php. Make sure you have the relevant route to handle a POST

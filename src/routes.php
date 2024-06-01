@@ -1,5 +1,6 @@
 <?php
 
+use PortfolioApp\Controllers\AdminController;
 use PortfolioApp\Controllers\GoogleLoginController;
 use PortfolioApp\Router;
 use PortfolioApp\Controllers\UserController;
@@ -9,6 +10,11 @@ use PortfolioApp\Controllers\CourseController;
 $router = new Router();
 
 $router->addRoute('GET','/', GeneralController::class, 'index');
+
+// dashboard
+$router->addRoute('GET','/dashboard', AdminController::class, 'dashboard');
+
+// users
 $router->addRoute('GET','/users/', UserController::class, 'index');
 $router->addRoute('GET','/users', UserController::class, 'index');
 $router->addRoute('GET','/users/page/{page}', UserController::class, 'index');

@@ -85,7 +85,8 @@ class UserController extends Controller
 		$storedHash = $stmt->fetchColumn();
 
 		if ($storedHash && password_verify($_POST['password'], $storedHash)) {
-			header('location: /');
+			$_SESSION['loggedin_user'] = $email;
+			header('location: /dashboard');
 			return;
 		}
 
@@ -143,7 +144,7 @@ class UserController extends Controller
 	{
 		unset($_SESSION['loggedin_user']);
 
-		$this->render('user/login');
+		header('location: /login');
 	}
 
 	public function add_user(): void

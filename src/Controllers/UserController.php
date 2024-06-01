@@ -85,10 +85,11 @@ class UserController extends Controller
 		$storedHash = $stmt->fetchColumn();
 
 		if ($storedHash && password_verify($_POST['password'], $storedHash)) {
-			echo 'login successful'; exit;
+			header('location: /');
+			return;
 		}
 
-		echo 'login failed'; exit;
+		$this->render('user/login', ['errors' => ['Either username or password is incorrect.']]);
 	}
 
 	public function register(): void
@@ -130,7 +131,12 @@ class UserController extends Controller
 		$stmt->bindParam(':password', $hashedPassword);
 		$stmt->bindParam(':is_active', $is_active);
 
-		$stmt->execute();
+		$success = $stmt->execute();
+
+		if ($success) {
+			header('location: /');
+			exit;
+		}
 	}
 
 	public function logout(): void

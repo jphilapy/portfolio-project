@@ -9,7 +9,12 @@ with others, I have never attempted to assemble one from, mostly, scratch. *For 
 1. Necessary sql files are located in the res directory
 2. See .env.example to make your .env file. Configure it with the relevant details
 3. Run: **composer install**
+4. Run: npm install
 4. Run server: **php -S localhost:8000**
+
+### OTher
+To run testing: At command line type: **npx cypress run**
+or ***npx cypress open** to open the interface 
 
 
 ### Common Error Messages

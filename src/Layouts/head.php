@@ -25,7 +25,7 @@
                     <li class="nav-item"><a class="nav-link active" href="login">Login</a></li>
                     <li class="nav-item"><a class="nav-link active" href="register">Register</a></li>
                 <?php else: ?>
-                    <li class="nav-item"><a class="nav-link active" href="logout">Logout</a></li>
+                    <li class="nav-item"><a id="logout-button" class="nav-link active" href="logout">Logout</a></li>
 				<?php endif; ?>
             </ul>
         </div>

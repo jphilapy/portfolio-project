@@ -28,7 +28,7 @@ class UserController extends Controller
 		$password = $_POST['password'];
 
 		if (empty($email)) {
-			$errors[] = 'Email is required.';
+			$errors[] = 'Username is required.';
 		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$errors[] = 'Invalid email format.';
 		}
@@ -73,7 +73,7 @@ class UserController extends Controller
 		$password = $_POST['password'];
 
 		if (empty($email)) {
-			$errors[] = 'Email is required.';
+			$errors[] = 'Username is required.';
 		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$errors[] = 'Invalid email format.';
 		}

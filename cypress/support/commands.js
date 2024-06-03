@@ -3,6 +3,7 @@ Cypress.Commands.add('visitWithTimeout', (url, options = {}) => {
     cy.visit(url, options);
 });
 
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

@@ -12,9 +12,9 @@ with others, I have never attempted to assemble one from, mostly, scratch. *For 
 4. Run: npm install
 4. Run server: **php -S localhost:8000**
 
-### OTher
-To run testing: At command line type: **npx cypress run**
-or ***npx cypress open** to open the interface 
+### Other
+To run testing - at command line type: **npx cypress run**
+or **npx cypress open** to open the interface 
 
 
 ### Common Error Messages

@@ -26,6 +26,7 @@ $router->addRoute('GET','/logout', UserController::class, 'logout');
 
 $router->addRoute('GET','/register', UserController::class, 'register');
 $router->addRoute('POST','/register', UserController::class, 'register_db');
+$router->addRoute('GET','/register-confirm', UserController::class, 'register_confirm');
 
 /* USERS */
 // edit user

@@ -102,7 +102,7 @@ class UserController extends Controller
 		$success = $stmt->execute();
 
 		if ($success) {
-			header('location: /');
+			header('location: /register-confirm');
 			exit;
 		}
 	}
@@ -112,6 +112,11 @@ class UserController extends Controller
 		unset($_SESSION['loggedin_user']);
 
 		header('location: /login');
+	}
+
+	public function register_confirm()
+	{
+		$this->render('user/register-confirm');
 	}
 }
 

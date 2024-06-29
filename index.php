@@ -26,11 +26,25 @@ use Psr\Container\ContainerInterface;
 $container = new DI\Container();
 $container->set(PDO::class, function () {
 	// Set up PDO connection to your database
-	$dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
-	$username = $_ENV['DB_USER'];
-	$password = $_ENV['DB_PASSWORD'];
+	if($_ENV['DATABASE'] === 'mysql') {
+		$dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
+		$username = $_ENV['DB_USER'];
+		$password = $_ENV['DB_PASSWORD'];
 
-	return new PDO($dsn, $username, $password);
+		try {
+			return new PDO($dsn, $username, $password);
+		} catch (PDOException $e) {
+			echo 'Connection failed: ' . $e->getMessage();
+		}
+	} else if($_ENV['DATABASE'] === "sqlite") {
+		$dsn = 'sqlite:database/'.$_ENV['DB_NAME'];
+
+		try {
+			return new PDO($dsn);
+		} catch (PDOException $e) {
+			echo 'Connection failed: ' . $e->getMessage();
+		}
+	}
 });
 
 $container->set(User::class, function (ContainerInterface $c) {

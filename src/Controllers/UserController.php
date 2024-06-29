@@ -45,8 +45,9 @@ class UserController extends Controller
 		// TASK: match encrypted password to database
 		$sql = "SELECT password FROM users WHERE email = :email";
 
+		$email = $_POST['username'];
 		$stmt = $this->pdo->prepare($sql);
-		$stmt->bindParam(':email', $_POST['username']);
+		$stmt->bindParam(':email', $email);
 		$stmt->execute();
 
 		$storedHash = $stmt->fetchColumn();

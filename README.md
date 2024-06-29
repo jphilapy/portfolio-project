@@ -13,10 +13,12 @@ with others, I have never attempted to assemble one from, mostly, scratch. *For 
 4. Run server: **php -S localhost:8000**
 
 ### Other
-To run testing - at command line type: **npx cypress run**
+- To run testing - at command line type: **npx cypress run**
 or **npx cypress open** to open the interface 
 
-
+- Database: 
+  - The password for all users, in the users-seeder.sql file, is password.
+  - The default database setup is for sqlite. That is to make this project more portable
 ### Common Error Messages
 **Class "AdminController" does not exist**
 

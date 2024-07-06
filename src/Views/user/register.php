@@ -20,6 +20,7 @@
 				<?php endif; ?>
 				<div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" name="username" id="email" data-bs-theme="light"></div>
 				<div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control" type="password" name="password" id="password" data-bs-theme="light"></div>
+				<div class="mb-3"><label class="form-label" for="password">Confirm Password</label><input class="form-control" type="password" name="confirm_password" id="confirm_password" data-bs-theme="light"></div>
 				<div class="mb-3">
 					<div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox" data-bs-theme="light"><label class="form-check-label" for="checkbox">Remember me</label></div>
 				</div>

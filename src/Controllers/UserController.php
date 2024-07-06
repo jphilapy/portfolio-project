@@ -72,6 +72,7 @@ class UserController extends Controller
 		$errors = [];
 		$email = trim($_POST['username']);
 		$password = $_POST['password'];
+		$confirm_password = $_POST['confirm_password'];
 
 		if (empty($email)) {
 			$errors[] = 'Username is required.';
@@ -81,6 +82,10 @@ class UserController extends Controller
 
 		if (empty($password)) {
 			$errors[] = 'Password is required.';
+		}
+
+		if (empty($confirm_password)) {
+			$errors[] = 'Confirmation password is required.';
 		}
 
 		if (!empty($errors)) {
